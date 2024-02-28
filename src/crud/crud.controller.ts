@@ -9,26 +9,31 @@ export class CrudController {
     // get all details
     @Get()
     public getAllData() {
-        return this.crudService.getAllData();
+        const data = this.crudService.getAllData();
+        return { status: 'success', data};
     }
 
     @Post()
     public addStudent(@Body() student: StudentModel){
-        return this.crudService.addStudent(student);
+        const data = this.crudService.addStudent(student);
+        return { status: 'success', data};
     }
 
     @Put(':id')
     public async updateStudent(@Param('id') id: number, @Body() student: StudentModel){
-        return this.crudService.updateStudent(id, student);
+        const data = await this.crudService.updateStudent(id, student);
+        return { status: 'success', data};
     }
 
     @Get(':id')
     public async getStudentById(@Param('id') id: number){
-        return this.crudService.getStudentById(id);
+        const data = await this.crudService.getStudentById(id);
+        return { status: 'success', data};
     }
 
     @Delete(':id')
     public async deleteStudent(@Param('id') id: number){
-        return this.crudService.deleteStudent(id);
+        const data = await this.crudService.deleteStudent(id);
+        return { status: 'success', data};
     }
 }

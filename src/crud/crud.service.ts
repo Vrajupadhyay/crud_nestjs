@@ -20,6 +20,8 @@ export class CrudService {
     }
 
     public addStudent(student) {
+        // id is auto-incremented
+        student.id = this.studentData.length + 1;
         this.studentData.push(student);
         return student;
     }
